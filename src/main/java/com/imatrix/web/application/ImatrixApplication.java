@@ -6,13 +6,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.imatrix.web.controllers.HomeCtrl;
+import com.imatrix.web.controllers.UploadCtrl;
 
 import static com.imatrix.backend.util.resources.Constants.UPLOAD_DIR;
 
 import java.io.File;;
 
 
-@SpringBootApplication(scanBasePackageClasses = HomeCtrl.class)
+@SpringBootApplication(scanBasePackageClasses = {HomeCtrl.class, UploadCtrl.class})
 public class ImatrixApplication {
 
 	
