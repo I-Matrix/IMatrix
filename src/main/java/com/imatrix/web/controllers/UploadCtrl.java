@@ -40,7 +40,7 @@ public class UploadCtrl {
 			if(image.updateImage(StringManipulation.finalize(image.getPath(), quarter)) == Constants.SUCCESS) {
 				if(image.updateImage(StringManipulation.finalize(image.getPath(), half)) == Constants.SUCCESS) {
 					if(image.updateImage(StringManipulation.finalize(image.getPath(), quarterhalf)) == Constants.SUCCESS) {
-						
+						 
 						File cloudinaryFileQuarter = new File(StringManipulation.finalize(image.getPath(),quarter));
 						File cloudinaryFileHalf = new File(StringManipulation.finalize(image.getPath(),half));
 						File cloudinaryFileQuarterHalf = new File(StringManipulation.finalize(image.getPath(),quarterhalf));
