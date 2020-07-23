@@ -145,7 +145,7 @@ public class Image {
                 int blue = RGB & 0xff;
                 int green = (RGB & 0xff00) >> 8;
                 int red = (RGB & 0xff0000) >> 16;
-
+ 
                 System.out.print("[" + red + " " + blue + " " + green + "] ");
             }
             System.out.println();
