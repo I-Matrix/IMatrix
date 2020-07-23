@@ -1,5 +1,8 @@
 package com.imatrix.web.application;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.imatrix.backend.*;
 import com.imatrix.backend.util.image.Image;
 import com.imatrix.backend.util.resources.Constants;
+import com.imatrix.backend.util.resources.Percentage;
 
 @SpringBootTest
 class ImatrixApplicationTests {
@@ -14,7 +18,7 @@ class ImatrixApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	@Test
+	
 	public void testImage() {
 		/* Variable Declarations */
 
@@ -34,6 +38,16 @@ class ImatrixApplicationTests {
 				System.out.println("Unsucessfull in Update");
 			}
 		}
+	}
+	
+	@Test
+	public void testResources() {
+		String home = System.getProperty("user.home");
+	    String fileNameRead = "tom";
+	    
+		Image image = new Image(home+"/Downloads/" + fileNameRead + ".jpg");
+		System.out.println("Width = " + image.getWidth() + " , Height = " + image.getHeight());
+		assertThat(Percentage.convertPercentageToK(image,40) == 91.);
 	}
 
 }

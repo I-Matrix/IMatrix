@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.imatrix.backend.services.cloudinary.CloudinaryObj;
 import com.imatrix.backend.util.image.Image;
 import com.imatrix.backend.util.resources.Constants;
+import com.imatrix.backend.util.resources.Percentage;
 import com.imatrix.backend.util.resources.StringManipulation;
 
 @RestController
@@ -32,17 +33,36 @@ public class UploadCtrl {
 			System.err.println("FAILED TO WRITE TO UPLOAD_DIR");
 			e.printStackTrace();
 		}
+        int quarter = (int)Percentage.convertPercentageToK(image, 25);
+        int half = (int)Percentage.convertPercentageToK(image, 50);
+        int quarterhalf = (int)Percentage.convertPercentageToK(image, 75);
 		if(image.compressImage(100) == Constants.SUCCESS) {
-			if(image.updateImage(StringManipulation.finalize(image.getPath(), 300)) == Constants.SUCCESS) {
-				File cloudinaryFile = new File(StringManipulation.finalize(image.getPath(), 300));
-				mv.addObject("name",CloudinaryObj.uploadFile(cloudinaryFile,image).get("secure_url"));
-			} else {
-				System.out.println("Unsucessfull In Update");
+			if(image.updateImage(StringManipulation.finalize(image.getPath(), quarter)) == Constants.SUCCESS) {
+				if(image.updateImage(StringManipulation.finalize(image.getPath(), half)) == Constants.SUCCESS) {
+					if(image.updateImage(StringManipulation.finalize(image.getPath(), quarterhalf)) == Constants.SUCCESS) {
+						
+						File cloudinaryFileQuarter = new File(StringManipulation.finalize(image.getPath(),quarter));
+						File cloudinaryFileHalf = new File(StringManipulation.finalize(image.getPath(),half));
+						File cloudinaryFileQuarterHalf = new File(StringManipulation.finalize(image.getPath(),quarterhalf));
+						String quarter_image_url = (String)CloudinaryObj.uploadFile(cloudinaryFileQuarter,image).get("secure_url");
+						mv.addObject("quarter_image",quarter_image_url);
+						mv.addObject("half_image",CloudinaryObj.uploadFile(cloudinaryFileHalf,image).get("secure_url"));
+						mv.addObject("quarter_and_half_image",CloudinaryObj.uploadFile(cloudinaryFileQuarterHalf,image).get("secure_url"));
+
+					}
+				}
 			}
-		} else {
-			System.out.println("Unsucessfull In Compression");
 		}
 		
 		return mv;
 	}
 }
+/**
+				File cloudinaryFileQuarter = new File(StringManipulation.finalize(image.getPath(),));
+				File cloudinaryFileHalf = new File(StringManipulation.finalize(image.getPath(),(int)Percentage.convertPercentageToK(image, 50)));
+				File cloudinaryFileQuarterHalf = new File(StringManipulation.finalize(image.getPath(),(int)Percentage.convertPercentageToK(image, 75)));
+
+				mv.addObject("quarter-image",CloudinaryObj.uploadFile(cloudinaryFileQuarter,image).get("secure_url"));
+				mv.addObject("half-image",CloudinaryObj.uploadFile(cloudinaryFileHalf,image).get("secure_url"));
+				mv.addObject("quarter-and-half-image",CloudinaryObj.uploadFile(cloudinaryFileQuarterHalf,image).get("secure_url"));
+**/
