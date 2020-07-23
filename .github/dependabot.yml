@@ -5,7 +5,8 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
+  - package-ecosystem: "maven" # ecosystem
+  - package_manager: "java:maven" # best manager in the world :D
     directory: "/" # Location of package manifests
-    schedule:
+    schedule: 
       interval: "daily"
