@@ -14,6 +14,14 @@ public class StringManipulation {
 		return NewPath;
 	}
 	
+	public static String getFileName(String path) {
+		int i;
+		for(i=path.length()-1; path.charAt(i)!='\\'; i--) {}
+		
+		return path.substring(i+1, path.length());
+	}
+	
+	
 	private static String addKEnd(String Path, Integer k) {
 		String newString = new String(Path);
 		newString+='k';

@@ -1,9 +1,13 @@
 package com.imatrix.backend.services.cloudinary;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.stereotype.Service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -11,26 +15,19 @@ import com.imatrix.backend.util.image.Image;
 import com.imatrix.backend.util.resources.Constants;
 import com.imatrix.backend.util.resources.StringManipulation;
 
-/**
- * Singelton Cloudinary OBJ
- */
-public class CloudinaryObj {
+@Service
+public class CloudinaryClientImpl implements CloudinaryClient{
 	private Map config;
 	private static Cloudinary cloudinary = null;
 	private static Boolean instantiated = false;
-	private CloudinaryObj() {
-		Map config = ObjectUtils.asMap(
-                "cloud_name", "ds6jz90yo",
-                "api_key", "637138787925718",
-                "api_secret", "1sXYPARz1jdkXbKoH7Tu463FJgI");
-		cloudinary = new Cloudinary(config);
-	}
 	
-	public static void startCloudinary() {
-		if(instantiated == false) {
-			instantiated = true;
-			new CloudinaryObj();
-		}
+	@PostConstruct
+	private void initalizeAccount() {
+		Map config = ObjectUtils.asMap(
+                "cloud_name", Constants.Cloud[0],
+                "api_key"   , Constants.Cloud[1],
+                "api_secret", Constants.Cloud[2]);
+		cloudinary = new Cloudinary(config);
 	}
 	
 	/**
@@ -55,7 +52,7 @@ public class CloudinaryObj {
 				    "etag":"1adf8d2ad3954f6270d69860cb126b24"
 				   }
 	 */
-	public static Map uploadFile(File cloudinaryFile, Image image) {
+	public Map uploadFile(File cloudinaryFile, Image image) {
 		Map uploadResult = null;
 		try {
 			uploadResult = cloudinary.uploader().upload(cloudinaryFile, ObjectUtils.emptyMap());

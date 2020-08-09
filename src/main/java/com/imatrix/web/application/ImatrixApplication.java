@@ -5,6 +5,7 @@ import org.apache.tomcat.util.http.fileupload.UploadContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.imatrix.backend.services.amazon.AmazonClientImpl;
 import com.imatrix.web.controllers.HomeCtrl;
 import com.imatrix.web.controllers.UploadCtrl;
 
@@ -13,7 +14,7 @@ import static com.imatrix.backend.util.resources.Constants.UPLOAD_DIR;
 import java.io.File;;
 
 
-@SpringBootApplication(scanBasePackageClasses = {HomeCtrl.class, UploadCtrl.class})
+@SpringBootApplication(scanBasePackageClasses = {HomeCtrl.class, UploadCtrl.class, AmazonClientImpl.class})
 public class ImatrixApplication {
 
 	

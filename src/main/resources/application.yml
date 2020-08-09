@@ -1,0 +1,12 @@
+amazonProperties:
+  accessKey: AKIATO3HIOGJBRLHIC2Y
+  secretKey: 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
+  bucketName: bucket-1239987
+  endpointUrl: https://s3.us-east-2.amazonaws.com
+  
+spring:
+ servlet:
+  multipart:
+   max-file-size: 100MB
+   max-request-size: 100MB
+  
