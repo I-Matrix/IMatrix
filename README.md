@@ -1,6 +1,6 @@
 # IMatrix
 
-<p align="center"><a target="_blank"><img width="200"src="https://cm1.narvii.com/6668/28e6303b81e88a8990832dfdcdfcf7b32f119697_00.jpg"></a></p>
+<p align="center"><a target="_blank"><img width="200"src="https://i.imgur.com/37HGorC.png"></a></p>
 
 
 An application that allows users to upload images and videos and compress
@@ -10,9 +10,21 @@ them to a lower size. :)
 # Development
 ---
 
-This is an Eclipse Dev Enviorement. Dont forget to add the libraries in the 
-lib/ section to the buildpath!
+All dependancies required to run the project is under <code>pom.xml</code>
 
+External Dependancies include:
+
+    1) Jama(SVD Library)
+    2) AWS (AWS S3 Main Storage)
+    3) Cloudinary(Alternate Storage)
+    4) Java XML Binding API (AWS Dependancy)
+
+Most Java Integrated Development Enviorements such as Eclipse, STS, and Intelji support maven hence all dependancies should be automatically installed once imported.
+
+
+# Algorithm(SVD)
+
+TODO Abraham
 
 # FAQ
 ---

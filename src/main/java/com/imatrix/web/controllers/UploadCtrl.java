@@ -20,6 +20,7 @@ import com.imatrix.backend.util.image.Image;
 import com.imatrix.backend.util.resources.Constants;
 import com.imatrix.backend.util.resources.Percentage;
 import com.imatrix.backend.util.resources.StringManipulation;
+import com.imatrix.web.util.UploadUtil;
 import static com.imatrix.backend.util.resources.StringManipulation.getFileName;
 
 @RestController
@@ -51,16 +52,18 @@ public class UploadCtrl {
 			e.printStackTrace();
 		}
         
-        int quarter = (int)Percentage.convertPercentageToK(image, 25);
-        String quarterPath = StringManipulation.finalize(image.getPath(), quarter);
-        String quarterFileName = StringManipulation.getFileName(quarterPath);
+        String quarter_url 		= UploadUtil.compress(image, 25,client);
+        String half_url    		= UploadUtil.compress(image, 50,client);
+        String quarter_half_url = UploadUtil.compress(image, 75,client);
         
-        if(image.compressImage(quarter) == Constants.SUCCESS) {
-        	if(image.updateImage(quarterPath) == Constants.SUCCESS) {
-        		client.uploadFileToBucket(Constants.BUCKET_NAME,quarterFileName , new File(quarterPath));
-        		mv.addObject("quarter_url", client.downloadFileFromBucket(Constants.BUCKET_NAME, quarterFileName));
-        	}
+        if(quarter_url==null || half_url==null || quarter_half_url==null) {
+        	System.err.println("ERROR COMPRESSING!");
+        	return mv;
         }
+        
+        mv.addObject("quarter_url"	   , quarter_url);
+        mv.addObject("half_url"        , half_url);
+        mv.addObject("quarter_half_url", quarter_half_url);
         
 		return mv;
 	}
