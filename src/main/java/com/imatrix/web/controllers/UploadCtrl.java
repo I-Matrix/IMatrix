@@ -21,6 +21,8 @@ import com.imatrix.backend.util.resources.Constants;
 import com.imatrix.backend.util.resources.Percentage;
 import com.imatrix.backend.util.resources.StringManipulation;
 import com.imatrix.web.util.UploadUtil;
+
+
 import static com.imatrix.backend.util.resources.StringManipulation.getFileName;
 
 @RestController
@@ -51,10 +53,12 @@ public class UploadCtrl {
 			System.err.println("FAILED TO WRITE TO UPLOAD_DIR");
 			e.printStackTrace();
 		}
-        
+  		
         String quarter_url 		= UploadUtil.compress(image,  25.0,  0,client);
         String half_url    		= UploadUtil.compress(image2, 50.0,  0,client);
         String quarter_half_url = UploadUtil.compress(image3, 100.0, 0,client);
+        
+        
         
         if(quarter_url==null || half_url==null || quarter_half_url==null) {
         	System.err.println("ERROR COMPRESSING!");

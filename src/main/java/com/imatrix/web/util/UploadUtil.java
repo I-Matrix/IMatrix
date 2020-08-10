@@ -32,7 +32,6 @@ public class UploadUtil {
         		return client.downloadFileFromBucket(Constants.BUCKET_NAME, fileName);
         	}
         }
-		
 		return null;
 	}
 	private UploadUtil() {}

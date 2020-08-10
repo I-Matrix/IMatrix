@@ -4,6 +4,8 @@ package com.imatrix.web.application;
 import org.apache.tomcat.util.http.fileupload.UploadContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import com.imatrix.backend.services.amazon.AmazonClientImpl;
 import com.imatrix.web.controllers.CustomCtrl;
@@ -29,7 +31,11 @@ public class ImatrixApplication {
 				System.out.println("SUCESSFULLY CREATED UPLOAD DIR!!");
 			}
 		}
-		SpringApplication.run(ImatrixApplication.class, args);
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(ImatrixApplication.class);
+
+		builder.headless(false);
+
+		ConfigurableApplicationContext context = builder.run(args);
 	}
 
 }
