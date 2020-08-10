@@ -17,13 +17,16 @@ import com.imatrix.backend.util.resources.StringManipulation;
  */
 public class UploadUtil {
 	
-	public static String compress(Image image, int percentage, AmazonClient client) throws IOException {
+	public static String compress(Image image, double percentage, double k, AmazonClient client) throws IOException {
+		int newK;
+		if(percentage<0) newK = (int) k;
+		else newK = (int)Percentage.convertPercentageToK(image, ((double)(percentage/100)));
 		
-		int newPercentage = (int)Percentage.convertPercentageToK(image, percentage);
-        String path = StringManipulation.finalize(image.getPath(), newPercentage);
+        String path = StringManipulation.finalize(image.getPath(), newK);
         String fileName = StringManipulation.getFileName(path);
         
-		if(image.compressImage(newPercentage) == Constants.SUCCESS) {
+        System.out.println(newK);
+		if(image.compressImage(newK) == Constants.SUCCESS) {
         	if(image.updateImage(path) == Constants.SUCCESS) {
         		client.uploadFileToBucket(Constants.BUCKET_NAME,fileName , new File(path));
         		return client.downloadFileFromBucket(Constants.BUCKET_NAME, fileName);
@@ -32,6 +35,5 @@ public class UploadUtil {
 		
 		return null;
 	}
-	
 	private UploadUtil() {}
 }

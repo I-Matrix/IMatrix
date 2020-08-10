@@ -12,18 +12,14 @@
         <h1>Post</h1>
         
         <div>
-        	<h2>25%</h2>
-		  	<img th:src="${quarter_url}"><br>
-		  	<h2>50%</h2>
-		    <img th:src="${half_url}"><br>
-		    <h2>100%</h2>
-		    <img th:src="${quarter_half_url}">
+        	<h2>Your Image</h2>
+		  	<img th:src="${new_image}"><br>
 		</div>
 		
 		<form method="POST" enctype="multipart/form-data" action="/custom">
 		<div>
 		<tr><td>File to upload:</td><td><input type="file" name="file" accept="image/*"/></td></tr><br>
-		 Type K Value you want : <input type="text" name="kValue" placeholder="K Value"/>
+		 Type K Value you want less than width and height of image: <input type="text" name="kValue" placeholder="K Value"/>
 		 <input type="submit"/>
 		</div>
 		</form>

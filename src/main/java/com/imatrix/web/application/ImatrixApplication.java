@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.imatrix.backend.services.amazon.AmazonClientImpl;
+import com.imatrix.web.controllers.CustomCtrl;
 import com.imatrix.web.controllers.HomeCtrl;
 import com.imatrix.web.controllers.UploadCtrl;
 
@@ -14,7 +15,7 @@ import static com.imatrix.backend.util.resources.Constants.UPLOAD_DIR;
 import java.io.File;;
 
 
-@SpringBootApplication(scanBasePackageClasses = {HomeCtrl.class, UploadCtrl.class, AmazonClientImpl.class})
+@SpringBootApplication(scanBasePackageClasses = {HomeCtrl.class, UploadCtrl.class, AmazonClientImpl.class, CustomCtrl.class})
 public class ImatrixApplication {
 
 	
