@@ -61,7 +61,7 @@ public class Matrix {
 	 */
 	private void compressWithK(int k){
 		Jama.SingularValueDecomposition svd = new Jama.SingularValueDecomposition(matrix);
-		double S = svd.getSingularValues();;
+		double[] S = svd.getSingularValues();;
 		Jama.Matrix V = svd.getV();
 		Jama.Matrix U = svd.getU();
 		
