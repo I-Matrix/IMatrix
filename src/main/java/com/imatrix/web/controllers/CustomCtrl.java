@@ -47,7 +47,7 @@ public class CustomCtrl {
         
         if(new_image_url==null) {
         	System.err.println("ERROR COMPRESSING!");
-        	int errr = 5/0; //Initate the error.html
+        	//int errr = 5/0; //Initate the error.html
         	return mv;
         }
         

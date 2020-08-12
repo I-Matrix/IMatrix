@@ -15,13 +15,13 @@ public class Percentage {
 	public static double convertPercentageToK(Image image,double percentage) {
         double height= image.getHeight();
         double width = image.getWidth();
-        percentage+=0.35;
+        percentage+=0.20;
         return helpConvert(height, width, percentage);
     }
     public static double helpConvert(double h, double w, double percentage){
         return (percentage*h*w)/(h+w);
     }
-	
+    
 	public static double convertPercentageToKOffset(Image image, double percentage, double offset) {
 		double height= image.getHeight();
 		double width = image.getWidth();
@@ -39,4 +39,13 @@ public class Percentage {
 	private static boolean inRange(double n1,double n2, double offset) {
 		return (n1 <= n2+offset && n1 >= n2-offset);
 	}
+	
+	
+	//m = width
+	//n = height
+	public static double convertFromDimensionToK(double m, double n, double percentage) {
+        if(m>n) return convertFromDimensionToK(n,m, percentage);
+        return (m*percentage);
+	}
+	
 }

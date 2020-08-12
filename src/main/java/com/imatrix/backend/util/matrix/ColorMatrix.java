@@ -28,9 +28,15 @@ public class ColorMatrix {
 	}
 	public int[][] compress(int k) {
 		int[][] ret = new int[numRow][numCol];
+		System.out.println("Setting Up Matrixes");
 		Matrix gMatrix = new Matrix(green);
+		System.out.println("Finished Green Matrix");
 		Matrix bMatrix = new Matrix(blue);
+		System.out.println("Finished Blue Matrix");
 		Matrix rMatrix = new Matrix(red);
+		System.out.println("reConstruct()ing");
+		System.out.println("numRow : " + numRow);
+		System.out.println("numCol : " + numCol);
 		green = gMatrix.reConstruct(k);
 		blue = bMatrix.reConstruct(k);
 		red = rMatrix.reConstruct(k);
