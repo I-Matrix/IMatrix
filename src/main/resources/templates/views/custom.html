@@ -77,7 +77,7 @@
                         <a href="https://github.com/I-Matrix/IMatrix" class="btn btn-outline-info my-2">Github</a>
                         <a href="https://github.com/I-Matrix/IMatrix/wiki" class="btn btn-outline-info my-2">Our Wiki</a>
                     </p>
-                    <div class="text-center">
+                    <div class="text-center" th:if="${post} == true">
                         <img th:src="${new_image}" class="rounded center" alt="new_image">
                     </div>
                 </div>

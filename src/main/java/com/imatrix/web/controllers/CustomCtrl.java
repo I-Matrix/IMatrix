@@ -27,7 +27,7 @@ public class CustomCtrl {
 	
 	@GetMapping("/custom")
 	public ModelAndView customGet() {
-		return new ModelAndView("customGet");
+		return new ModelAndView("custom").addObject("post", false);
 	}
 	
 	@PostMapping("/custom")
@@ -60,6 +60,6 @@ public class CustomCtrl {
         mv.addObject("new_image", new_image_url);
         
 		
-		return mv;
+		return mv.addObject("post", true);
 	}
 }
