@@ -32,7 +32,7 @@ public class UploadCtrl {
 	private AmazonClient client;
 	
 	@PostMapping(path="/upload")
-	public ModelAndView homePage(@RequestParam("file") MultipartFile file) throws IOException {
+	public ModelAndView homePage(@RequestParam("file") MultipartFile file) throws Exception {
 		ModelAndView mv = new ModelAndView("post");
 		Image image = null;
 		Image image2 = null;

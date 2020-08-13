@@ -32,7 +32,7 @@ public class CustomCtrl {
 	
 	@PostMapping("/custom")
 	public ModelAndView custom(@RequestParam("file") MultipartFile file, 
-							   @RequestParam("kValue") int k) throws IOException {
+							   @RequestParam("kValue") int k) throws Exception {
 		ModelAndView mv = new ModelAndView("post");
 		Image image = null;
 

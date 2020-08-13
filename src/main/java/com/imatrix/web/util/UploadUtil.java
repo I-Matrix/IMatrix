@@ -17,7 +17,7 @@ import com.imatrix.backend.util.resources.StringManipulation;
  */
 public class UploadUtil {
 	
-	public static String compress(Image image, double percentage, double k, AmazonClient client) throws IOException {
+	public static String compress(Image image, double percentage, double k, AmazonClient client) throws Exception {
 		int newK;
 		if(percentage<0) newK = (int) k;
 		else newK = (int)Percentage.convertFromDimensionToK(image.getWidth(),image.getHeight(),((double)(percentage/100)));

@@ -1,5 +1,7 @@
 package com.imatrix.backend.util.resources;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 public class StringManipulation {
 
 	// blahblah/blah/example.jpg
@@ -14,9 +16,16 @@ public class StringManipulation {
 		return NewPath;
 	}
 	
-	public static String getFileName(String path) {
+	public static String getFileName(String path) throws Exception {
 		int i;
-		for(i=path.length()-1; path.charAt(i)!='\\'; i--) {}
+		char deli = ' ';
+		
+		if(OSValidator.isUnix() == true) deli = '/';
+		else if(OSValidator.isWindows() == true) deli = '\\';
+		else throw new Exception("OS Not SUPPORTED(ONLY UNIX AND Windows Based OS's are supported!)");
+	
+			
+		for(i=path.length()-1; path.charAt(i)!=deli; i--) {}
 		
 		return path.substring(i+1, path.length());
 	}
