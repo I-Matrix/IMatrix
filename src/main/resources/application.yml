@@ -1,6 +1,6 @@
 amazonProperties:
-  accessKey: XXXXXXXXXXXXXXXXXX
-  secretKey: XXXXXXXXXXXXXXXXXX
+  accessKey: XXXXXXXXXXXXXXXXXXX
+  secretKey: XXXXXXXXXXXXXXXXXXX
   bucketName: bucket-1239987
   endpointUrl: https://s3.us-east-2.amazonaws.com
   

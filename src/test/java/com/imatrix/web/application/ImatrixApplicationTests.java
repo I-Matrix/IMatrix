@@ -42,12 +42,12 @@ class ImatrixApplicationTests {
 	
 	@Test
 	public void testResources() {
-		String home = System.getProperty("user.home");
-	    String fileNameRead = "tom";
-	    
-		Image image = new Image(home+"/Downloads/" + fileNameRead + ".jpg");
-		System.out.println("Width = " + image.getWidth() + " , Height = " + image.getHeight());
-		assertThat(Percentage.convertPercentageToK(image,40) == 91.);
+//		String home = System.getProperty("user.home");
+//	    String fileNameRead = "tom";
+//	    
+//		Image image = new Image(home+"/Downloads/" + fileNameRead + ".jpg");
+//		System.out.println("Width = " + image.getWidth() + " , Height = " + image.getHeight());
+//		assertThat(Percentage.convertPercentageToK(image,40) == 91.);
 	}
 
 }
