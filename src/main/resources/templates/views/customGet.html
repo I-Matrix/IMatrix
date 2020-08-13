@@ -47,11 +47,12 @@
             </div>
         </header>
         <main role="main">
-        <main role="main">
+          
+          <main role="main">
             <section class="jumbotron text-center">
                 <div class="container">
                     <h1 class="jumbotron-heading">Your input</h1>
-                    <p class="lead text-muted">Choose another image to compress (<128kb) with a specified k value</p>
+                    <p class="lead text-muted">Choose an image to compress (<128kb) with a specified k value</p>
                     <p class="text-muted">
                     <form method="POST" enctype="multipart/form-data" action="/custom" class="text-muted">
                         <table>
@@ -77,13 +78,11 @@
                         <a href="https://github.com/I-Matrix/IMatrix" class="btn btn-outline-info my-2">Github</a>
                         <a href="https://github.com/I-Matrix/IMatrix/wiki" class="btn btn-outline-info my-2">Our Wiki</a>
                     </p>
-                    <div class="text-center">
-                        <img th:src="${new_image}" class="rounded center" alt="new_image">
-                    </div>
-                </div>
-            </section>
-        </main>
-        <footer class="text-muted">
+              </div>
+          </section>
+        
+      </main>
+      <footer class="text-muted">
             <div class="container">
                 <p class="float-right">
                     <a href="#">Back to top</a>
@@ -92,5 +91,6 @@
                 <p>Intrested in my other projects? <a href="https://github.com/amanuel2">Visit the homepage</a></p>
             </div>
         </footer>
-    </body>
+      
+  </body>
 </html>

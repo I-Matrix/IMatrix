@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,11 @@ public class CustomCtrl {
 	
 	@Autowired
 	private AmazonClient client;
+	
+	@GetMapping("/custom")
+	public ModelAndView customGet() {
+		return new ModelAndView("customGet");
+	}
 	
 	@PostMapping("/custom")
 	public ModelAndView custom(@RequestParam("file") MultipartFile file, 

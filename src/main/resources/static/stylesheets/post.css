@@ -1,0 +1,11 @@
+#custom{
+  display: inline-block;
+}
+#submit_but{
+  display: inline-block;
+}
+br {
+   display: block; /* makes it have a width */
+   content: ""; /* clears default height */
+   margin-top: 0;
+}
