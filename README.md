@@ -33,6 +33,20 @@ Most Java Integrated Development Enviorements such as Eclipse, STS, and Intelji 
     (cd target && java -jar imatrix-0.0.1-SNAPSHOT.jar)
 ```
 
+### Windows
+
+    1) Install Eclipse or Intellij IDE 
+    2) Build maven dependancies from within the IDE
+    3) Finnaly run maven from within the IDE
+    
+#### Resources on running Maven 
+
+[Via Eclipse](https://www.youtube.com/watch?v=sNEcpw8LPpo)
+
+[Via Intellij](https://www.youtube.com/watch?v=pt3uB0sd5kY)
+
+[Via Netbeans](https://www.youtube.com/watch?v=CDkdy3BwIqs)
+
 # Algorithm(SVD)
 
 TODO Abraham
