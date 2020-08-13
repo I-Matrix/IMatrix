@@ -70,6 +70,6 @@ public class UploadCtrl {
         mv.addObject("half_url"        , half_url);
         mv.addObject("quarter_half_url", quarter_half_url);
         
-		return mv;
+		return mv.addObject("custom",false);
 	}
 }

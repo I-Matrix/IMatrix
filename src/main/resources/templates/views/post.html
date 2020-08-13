@@ -68,7 +68,12 @@
                                     <span class="sr-only"></span> 
                                 </div>
                             </div>
+                            <div th:if="${custom} == true">
                             <script th:src="@{/scripts/fastProgress.js}" type="text/javascript"></script>
+                            </div>
+                            <div th:if="${custom} == false">
+                            <script th:src="@{/scripts/progress.js}" type="text/javascript"></script>
+                            </div>
                         </table>
                     </form>
                     </p>
@@ -76,7 +81,12 @@
                         <a href="https://github.com/I-Matrix/IMatrix" class="btn btn-outline-info my-2">Github</a>
                         <a href="https://github.com/I-Matrix/IMatrix/wiki" class="btn btn-outline-info my-2">Our Wiki</a>
                     </p>
-                    <div class="album py-5 bg-light">
+                    <div th:if="${custom} == true">
+                     <div class="text-center" th:if="${post} == true">
+                        <img th:src="${new_image}" class="rounded center" alt="new_image">
+                      </div>
+                    </div>
+                    <div class="album py-5 bg-light" th:if="${custom} == false">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-4">

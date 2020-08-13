@@ -27,13 +27,13 @@ public class CustomCtrl {
 	
 	@GetMapping("/custom")
 	public ModelAndView customGet() {
-		return new ModelAndView("custom").addObject("post", false);
+		return new ModelAndView("post").addObject("post", false).addObject("custom",true);
 	}
 	
 	@PostMapping("/custom")
 	public ModelAndView custom(@RequestParam("file") MultipartFile file, 
 							   @RequestParam("kValue") int k) throws IOException {
-		ModelAndView mv = new ModelAndView("custom");
+		ModelAndView mv = new ModelAndView("post");
 		Image image = null;
 
 		
@@ -60,6 +60,6 @@ public class CustomCtrl {
         mv.addObject("new_image", new_image_url);
         
 		
-		return mv.addObject("post", true);
+		return mv.addObject("post", true).addObject("custom",true);
 	}
 }
