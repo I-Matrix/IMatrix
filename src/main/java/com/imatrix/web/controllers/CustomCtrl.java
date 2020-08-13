@@ -36,7 +36,7 @@ public class CustomCtrl {
 		ModelAndView mv = new ModelAndView("post");
 		Image image = null;
 
-		
+		 
         Path dirStore = Paths.get(Constants.UPLOAD_DIR, file.getOriginalFilename()); // New PATH
         client.createBucket(Constants.BUCKET_NAME);
         
