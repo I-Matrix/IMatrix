@@ -21,6 +21,17 @@ External Dependancies include:
 
 Most Java Integrated Development Enviorements such as Eclipse, STS, and Intelji support maven hence all dependancies should be automatically installed once imported.
 
+## How to run this Spring aplication
+
+### Ubuntu
+```sh
+    ### Type these commands consecutively
+    git clone https://github.com/I-Matrix/IMatrix
+    (cd src && rm -rf test) # Remove all tests for building/deploying purposes
+    mvn clean install
+    sudo mkdir /root/Downloads # For Cross Compatability with Windows
+    (cd target && java -jar imatrix-0.0.1-SNAPSHOT.jar)
+```
 
 # Algorithm(SVD)
 
