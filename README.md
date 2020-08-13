@@ -26,7 +26,7 @@ Most Java Integrated Development Enviorements such as Eclipse, STS, and Intelji 
 ### Ubuntu
 ```sh
     ### Type these commands consecutively
-    git clone https://github.com/I-Matrix/IMatrix
+    git clone https://github.com/I-Matrix/IMatrix && cd IMatrix
     (cd src && rm -rf test) # Remove all tests for building/deploying purposes
     mvn clean install
     sudo mkdir /root/Downloads # For Cross Compatability with Windows
