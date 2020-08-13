@@ -19,11 +19,46 @@ External Dependancies include:
     3) Cloudinary(Alternate Storage)
     4) Java XML Binding API (AWS Dependancy)
 
-Most Java Integrated Development Enviorements such as Eclipse, STS, and Intelji support maven hence all dependancies should be automatically installed once imported.
+Most Java Integrated Development Enviorements such as Eclipse, STS, and Intelji support maven hence all dependancies 
+should be automatically installed once imported.
+
+I reccomend seeing our [WIKI](https://github.com/I-Matrix/IMatrix/wiki) for instructions on installation
+
+
+## Set JAVA_HOME
+
+### Ubuntu/Debian
+```sh
+    nano ~/.bashrc
+```
+
+### Mac OSX
+
+```sh
+    cd
+    touch .bash_profile
+    nano  .bash_profile
+```
+
+### Unix
+At the end of the bashrc/bash_profile file add
+```sh
+    export JAVA_HOME=/usr
+    export PATH=$JAVA_HOME/bin:$PATH
+```
+
+Now to set JAVA_HOME For Windows Systems
+
+### Windows
+
+    1) Go to your environment variables in C-Panel
+    2) Create a variable JAVA_HOME and set it to JDK(NOT JRE!) 
+
+[Video going over this](https://www.youtube.com/watch?v=104dNWmM6Rs)
 
 ## How to run this Spring aplication
 
-### Ubuntu
+### Ubuntu/Debian
 ```sh
     ### Type these commands consecutively
     git clone https://github.com/I-Matrix/IMatrix && cd IMatrix
