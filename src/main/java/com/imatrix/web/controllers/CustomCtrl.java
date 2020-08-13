@@ -46,7 +46,7 @@ public class CustomCtrl {
          
 		} catch (IOException e) {
 			System.err.println("FAILED TO WRITE TO UPLOAD_DIR");
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 
         String new_image_url	= UploadUtil.compress(image,-1.0,k,client);
