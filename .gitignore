@@ -1,8 +1,11 @@
 HELP.md
+
+#### SPRING FILES ######
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.tmp
 
 ### STS ###
 .apt_generated
@@ -31,3 +34,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
