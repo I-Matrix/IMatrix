@@ -84,12 +84,23 @@ Now to set JAVA_HOME For Windows Systems
 
 # Algorithm(SVD)
 
-TODO Abraham
+Much more detailed explanation on this algorithm on our [WIKI](https://github.com/I-Matrix/IMatrix/wiki/SVD-Introduction).
+
+Singular Value Decomposition (SVD) states that every (m × n)‑matrix A can be written as a product
+
+<img src="https://i.imgur.com/mj3oj43.png"/>
 
 # FAQ
 ---
 
-None as of now. Will get updated
+1) My JAVA_HOME isnt set correctly, What can I do? Go [Here](https://github.com/I-Matrix/IMatrix/wiki/Installation---UNIX-Systems)!
+
+2) I got a problem while using IMatrix.me where can I report it? [Here](https://github.com/I-Matrix/IMatrix/issues)!!
+
+3) How do i get to fork this project and work on it myself? Go [Here](https://github.com/I-Matrix/IMatrix/wiki/Installation) for instructions!
+
+4) Are there any other projects you worked on? For sure! Go [here](https://github.com/amanuel2) to see all of them.
+
 
 # License
 ---
