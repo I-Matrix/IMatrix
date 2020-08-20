@@ -33,7 +33,7 @@ import com.imatrix.backend.util.resources.Constants;
 * 
 * <p>
 * 	This is the implementation of the AmazonClient interface.
-*   @see {@interface AmazonClient} for more details
+*   @see AmazonClient for more details
 * </p>
 * 
 * <p>
@@ -50,17 +50,17 @@ import com.imatrix.backend.util.resources.Constants;
 @Service
 public class AmazonClientImpl implements AmazonClient {
 
-	/**
-	 * Main S3 Object
-	 */
+  /**
+    * Main S3 Object
+	*/
 	private AmazonS3 s3client;
-	
-	/**
-	 * All values driven from the property file
-	 * <pre> 'res/application.yml' </p>
-	 */
+
+   /**
+	* All values driven from the property file
+	* <pre> 'res/application.yml' </p>
+	*/
 	@Value("${amazonProperties.endpointUrl}")
-    private String endpointUrl;
+	private String endpointUrl;
     
 	@Value("${amazonProperties.bucketName}")
     private String bucketName;
@@ -70,8 +70,14 @@ public class AmazonClientImpl implements AmazonClient {
     
 	@Value("${amazonProperties.secretKey}")
     private String secretKey;
-	
-    @PostConstruct
+
+
+	/**
+	 * @POST_CONSTRUCT
+	 * Used to initalize Amazon account
+	 * before using s3 buckets
+	 */
+	@PostConstruct
     private void initalizeAccount() {
 		AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
 		this.s3client = new AmazonS3Client(credentials);

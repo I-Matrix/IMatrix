@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import com.imatrix.backend.services.amazon.AmazonClient;
 import org.springframework.stereotype.Service;
 
 import com.cloudinary.Cloudinary;
@@ -15,12 +16,35 @@ import com.imatrix.backend.util.image.Image;
 import com.imatrix.backend.util.resources.Constants;
 import com.imatrix.backend.util.resources.StringManipulation;
 
+/**
+ * <h1>Cloudinary Client Implementation</h1>
+ * <p>
+ * 	Implementation of this interface
+ * </p>
+ *
+ * <p>
+ * 	This is the implementation of the @interface CloudinaryClient
+ *   @see CloudinaryClient for more details
+ * </p>
+ *
+ *
+ * @author  Amanuel Bogale
+ * @version 0.1
+ * @since   2020-08-20
+ * @see     CloudinaryClient
+ */
 @Service
 public class CloudinaryClientImpl implements CloudinaryClient{
+
+	/*variable used to store configuration*/
 	private Map config;
 	private static Cloudinary cloudinary = null;
-	private static Boolean instantiated = false;
-	
+
+	/**
+	 * @POST_CONSTRUCT
+	 * Used to initalize Cloudinary account
+	 * before using the database
+	 */
 	@PostConstruct
 	private void initalizeAccount() {
 		Map config = ObjectUtils.asMap(
@@ -29,38 +53,18 @@ public class CloudinaryClientImpl implements CloudinaryClient{
                 "api_secret", Constants.Cloud[2]);
 		cloudinary = new Cloudinary(config);
 	}
-	
+
 	/**
-	 * 
-	 * @param cloudinaryFile
-	 * @param image
-	 * @return MAP_EXAMPLE : 
-				   { "public_id":"tquyfignx5bxcbsupr6a",
-				    "version":1375302801,
-				    "signature":"52ecf23eeb987b3b5a72fa4ade51b1c7a1426a97",
-				    "width":1920,
-				    "height":1200,
-				    "format":"jpg",
-				    "resource_type":"image",
-				    "created_at":"2017-07-31T20:33:21Z",
-				    "bytes":737633,
-				    "type":"upload",
-				    "url":
-				        "https://res.cloudinary.com/demo/image/upload/v1375302801/tquyfignx5bxcbsupr6a.jpg",
-				    "secure_url":
-				        "https://res.cloudinary.com/demo/image/upload/v1375302801/tquyfignx5bxcbsupr6a.jpg",
-				    "etag":"1adf8d2ad3954f6270d69860cb126b24"
-				   }
+	 *
+	 * @param  cloudinaryFile The file to upload into
+	 * 		 the database
+	 * @return a cloudinary map which has been described
+	 * 		   thoroughly in interface
+	 * @see    CloudinaryClient
+	 * @throws IOException
 	 */
-	public Map uploadFile(File cloudinaryFile, Image image) {
-		Map uploadResult = null;
-		try {
-			uploadResult = cloudinary.uploader().upload(cloudinaryFile, ObjectUtils.emptyMap());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.err.println("ERROR UPLOADING IMAGE TO CLOUD!");
-		}
-		return uploadResult;
+	public Map uploadFile(File cloudinaryFile) throws IOException{
+
+		return cloudinary.uploader().upload(cloudinaryFile, ObjectUtils.emptyMap());
 	}
 }

@@ -13,7 +13,6 @@ public class Image {
 	
 	private BufferedImage img;
 	private int[][] rgbVals;
-//	private double[][] originalVals;
 	
 	//No change in resolution hence const;
 	private final int width;
