@@ -1,5 +1,15 @@
 package com.imatrix.backend.util.resources;
 
+/**
+ * <h1>Constants</h1>
+ * <p>
+ * 	All constants used in this app
+ * </p>
+ *
+ * @author  Amanuel
+ * @version 0.1
+ * @since   2020-08-20
+ */
 public class Constants {
 	
 	public final static int SUCCESS = 1;

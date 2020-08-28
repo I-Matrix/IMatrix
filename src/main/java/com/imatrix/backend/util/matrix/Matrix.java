@@ -1,9 +1,30 @@
 package com.imatrix.backend.util.matrix;
 
- 
+/**
+ * <h1>Matrix</h1>
+ * <p>
+ * 	Implementation of a Matrix
+ * </p>
+ *
+ * <p>
+ * This is the main function for matrcies
+ * which compresses, recieves rgb values
+ * and does most of the heavy computation
+ * of the program
+ * </p>
+ *
+ *
+ * @author  Abraham
+ * @version 0.1
+ * @since   2020-08-20
+ * @see    com.imatrix.backend.util.matrix.ColorMatrix
+ */
 public class Matrix {
-	
 
+
+	/**
+	 * private members
+	 */
 	private Jama.Matrix matrix; //Non Compressed Matrix
 	private int numCols, numRows; //Columns and Rows
 	
@@ -29,8 +50,12 @@ public class Matrix {
 	public Jama.Matrix getMatrix(){
 		return this.matrix;
 	}
-	
-	//Forms a matrix out o
+
+	/**
+	 * Forms a matrix out of the
+	 * multi dimens array
+	 * @param array the array
+	 */
 	public Matrix(double[][] array) {
 		this.matrix = new Jama.Matrix(array);
 		try {
@@ -82,8 +107,11 @@ public class Matrix {
 		}
 		this.V = retV.clone();
 	}
-	
-	
+
+	/**
+	 * Prints the matrix
+	 * mostly used for debugging purposes
+	 */
 	public void printMatrix() {
 		for(int i = 0; i < this.AP.length; i ++) {
 			for(int j = 0; j < this.AP[i].length; j ++) {
@@ -114,12 +142,14 @@ public class Matrix {
 		vTemp = vTemp.getMatrix(0, this.numCols - 1, 0, k - 1); // saving the first k columns of V
 		this.AP = uTemp.times(vTemp.transpose()).getArray();
 	}
+
+
 	/**
 	 * {@summary} : Compresses this.matrix and returns U and V
 	 * 				To see how the compression is done look at 
 	 *              this.compressWith().
-	 *              
-	 *              
+	 *
+	 *
 	 * @param k   : Number of singular values or rank
 	 *
 	 */
@@ -129,7 +159,9 @@ public class Matrix {
 			this.AP(k);
 			return this.AP;
 		}else {
-			throw new IllegalStateException("Invalid compressing factor. K should be greater thatn zero and less than the dimensions of the matrix ");
+			throw new IllegalStateException("Invalid compressing factor. " +
+											"K should be greater thatn zero and" +
+											" less than the dimensions of the matrix ");
 		}
 		
 	}

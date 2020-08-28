@@ -25,12 +25,36 @@ import com.imatrix.web.util.UploadUtil;
 
 import static com.imatrix.backend.util.resources.StringManipulation.getFileName;
 
+/**
+ * <h1>Upload Ctrl</h1>
+ * <p>
+ * 		/upload
+ * </p>
+ *
+ * <p>
+ * 	This is the controller
+ * 	for the /upload query
+ * </p>
+ *
+ *
+ * @author  Amanuel Bogale
+ * @version 0.1
+ * @since   2020-08-20
+ */
 @RestController
 public class UploadCtrl {
 	
 	@Autowired
 	private AmazonClient client;
-	
+
+	/**
+	 * POST Controller for posting
+	 * an image to /upload
+	 * @param file File to compress
+	 * @return a ModelView with objects
+	 * 		   of compressed image
+	 * @throws Exception
+	 */
 	@PostMapping(path="/upload")
 	public ModelAndView homePage(@RequestParam("file") MultipartFile file) throws Exception {
 		ModelAndView mv = new ModelAndView("post");
@@ -58,10 +82,7 @@ public class UploadCtrl {
         String half_url    		= UploadUtil.compress(image2, 50.0,  0,client);
         String quarter_half_url = UploadUtil.compress(image3, 100.0, 0,client);
         
-        
-        
         if(quarter_url==null || half_url==null || quarter_half_url==null) {
-        	System.err.println("ERROR COMPRESSING!");
         	int errr = 5/0; //Initate the error.html
         	return mv;
         }

@@ -113,9 +113,9 @@ public interface AmazonClient {
    * the user as @param's
    * </p>
    * 
-   * @param  bucketName name of the bucket that will
+   * @param  bucket name of the bucket that will
    * 		 have the file to download from
-   * @param  <b>filename only</b> of the file 
+   * @param  fileName <b>filename only</b> of the file
    * 		 being downloaded
    * @return returns the string of the path where
    * 		 the file from the bucket has been

@@ -1,9 +1,14 @@
 package com.imatrix.backend.util.resources;
 
 /**
- * ### FORKED
+ * <h1>FORKED</h1>
+ * <p>
+ * Checks which operating system is running this
+ * application
+ * </p>
+ *
  * @author Domenico Monaco
- * @url   https://stackoverflow.com/questions/14288185/detecting-windows-or-linux
+ * @url   https://stackoverflow.com/questions/14288185
  *
  */
 public class OSValidator {

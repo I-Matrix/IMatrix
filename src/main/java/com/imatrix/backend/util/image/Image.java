@@ -5,12 +5,32 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
+import com.imatrix.backend.services.cloudinary.CloudinaryClient;
 import com.imatrix.backend.util.resources.*;
 import com.imatrix.backend.util.matrix.ColorMatrix;
 
-
+/**
+ * <h1>Image</h1>
+ * <p>
+ * 	Implementation of an Image
+ * </p>
+ *
+ * <p>
+ * 	This is the base Image class
+ * 	used throughout the program
+ * </p>
+ *
+ *
+ * @author  Amanuel Bogale
+ * @version 0.1
+ * @since   2020-08-20
+ */
 public class Image {
-	
+
+	/**
+	 * private members
+	 */
 	private BufferedImage img;
 	private int[][] rgbVals;
 	
@@ -36,6 +56,11 @@ public class Image {
 		return this.PATH;
 	}
 
+	/**
+	 * Load image from path
+	 * (already downloaded)
+	 * @param PATH path specified
+	 */
 	public Image(String PATH) {
 	      BufferedImage img = null;
 	      File f = null;
@@ -55,7 +80,11 @@ public class Image {
 		this.matrix = new ColorMatrix(this.rgbVals);
 		this.PATH = PATH;
 	}
-	
+
+	/**
+	 * Convert the multi-dimens array
+	 * into rgb values
+	 */
     private void convertToRGB() {
     	int[][] rgb_Values = new int[width][height];
 		for(int i = 0; i < width; i ++) {
@@ -66,6 +95,14 @@ public class Image {
 		this.rgbVals = rgb_Values;
     }
 
+	/**
+	 * Returns an rgb at the specific
+	 * width/height position
+	 * @param width row of index
+	 * @param height col of index
+	 * @return returns a double[] of rgb in
+	 * 		   that order
+	 */
     public double[] returnRGBAtPos(int width, int height){
         Integer RGB = (int) this.rgbVals[height][width];
         int blue = RGB & 0xff;
@@ -73,8 +110,15 @@ public class Image {
         int red = (RGB & 0xff0000) >> 16;
         return new double[]{red,blue,green};
     }
-    
-    public int setImageOffset(Integer offset){
+
+	/**
+	 * Offets the RGB of each pixel
+	 * by the amount specified by user
+	 * @param offset amount to offset by
+	 * @return returns a success or failure
+	 * 	 	   depending on the task
+	 */
+	public int setImageOffset(Integer offset){
     	try {
     		int[][] RGB_Values = new int[this.height][];
 	        for(int y=0; y<this.height; y++){
@@ -101,20 +145,33 @@ public class Image {
     public void setImageMatrix(int[][] rgbValues) {
         this.rgbVals =  rgbValues.clone();
     }
-    
-    public int compressImage(int k) {
+
+	/**
+	 * Compresses an image using
+	 * the Matrix class defined in
+	 * IMatrix
+	 * @param k K Value to compress it by
+	 * @return returns success if successfully compressed
+	 * 		   or failure otherwise
+	 */
+	public int compressImage(int k) {
     	try {
-			System.out.println("Inside colorMatrix.compressor");
 			this.rgbVals = this.matrix.compress(k);
-			System.out.println("Done Compressing");
 		} catch(Exception e) {
 			System.out.println(e);
 			return Constants.FAILURE;
 		}
 		return Constants.SUCCESS;
     }
-	public int updateImage(String Path) {	
-		System.out.println("Updating the Image...");
+
+	/**
+	 * Writes the current image in this class
+	 * to the path specified by the user
+	 * @param Path path specified
+	 * @return returns sucess if sucessfully written
+	 * 		   or failure otherwise
+	 */
+	public int updateImage(String Path) {
 		for(int i = 0; i < this.width; i ++) {
 			for(int j = 0; j < this.height; j ++) {
 				img.setRGB(i, j, this.rgbVals[i][j]);
@@ -131,8 +188,13 @@ public class Image {
 		}
 		return Constants.SUCCESS;
 	}
-    
-    public void printImageRGB(int dimension){
+
+	/**
+	 * Print the image in sets of RGB for debugging
+	 * purposes
+	 * @param dimension dimension(WxH) to print by
+	 */
+	public void printImageRGB(int dimension){
         // Prints first dimensionxdimension square matrix rgb values 
         for(int y=0; y<dimension; y++){
             for(int x=0; x<dimension; x++){
